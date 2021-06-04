@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "164436732082",
+    "project_id": "linkone-2021",
+    "storage_bucket": "linkone-2021.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:164436732082:android:48c9b66a3cdf82921d81ab",
+        "android_client_info": {
+          "package_name": "net.shohi.linkone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "164436732082-8cs1pg4pd1hntu1d4vcnmnm3mg704ua4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_qlAih4ypWCkioDf8EDq6aj4s7E35Cf0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "164436732082-8cs1pg4pd1hntu1d4vcnmnm3mg704ua4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "164436732082-c2ld809l9pn9eo0dkc0na3i16jflq457.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "net.shohi.linkone"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
