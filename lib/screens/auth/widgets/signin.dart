@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-// import 'package:lit_firebase_auth/lit_firebase_auth.dart';
-import '../widgets/decoration_function.dart';
-import './sign_in_up_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:linkone/config/pallet.dart';
+import 'package:linkone/config/utils.dart';
+import 'package:linkone/screens/home.dart';
 
-import '../../../config/pallet.dart';
+import 'decoration_function.dart';
+import 'sign_in_up_bar.dart';
 import 'title.dart';
 
 class SignIn extends StatelessWidget {
@@ -19,10 +23,11 @@ class SignIn extends StatelessWidget {
 
   final emailInputController = TextEditingController(text: "@kwansei.ac.jp");
   final pwdInputController = TextEditingController();
-  bool _showPassword;
+  // bool _showPassword;
 
   @override
   Widget build(BuildContext context) {
+    Firebase.initializeApp();
     // final isSubmitting = context.isSubmitting();
     return Form(
       key: _signinKey,
@@ -61,7 +66,26 @@ class SignIn extends StatelessWidget {
                     label: 'Sign in',
                     isLoading: false,
                     onPressed: () {
-                      // context.signInWithEmailAndPassword();
+                      if (_signinKey.currentState.validate()) {
+                        FirebaseAuth.instance
+                          .signInWithEmailAndPassword(
+                              email: emailInputController.text,
+                              password: pwdInputController.text)
+                          .then((result) => {
+                            print("User id is ${result.user.uid}"),
+                            Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        HomePage(),),
+                                (_) => false),
+                            emailInputController.clear(),
+                            pwdInputController.clear(),
+                          })
+                          .catchError((err) {
+                            Utils.showErrorDialog(err, context);
+                          });
+                      }
                     },
                   ),
                   Align(
