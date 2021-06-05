@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:linkone/config/utils.dart';
-import 'package:linkone/screens/home.dart';
+import 'package:provider/provider.dart';
 
+import 'package:linkone/config/utils.dart';
+import 'package:linkone/models/auth_model.dart';
 import 'decoration_function.dart';
 import 'sign_in_up_bar.dart';
 import 'title.dart';
@@ -77,26 +76,9 @@ class Register extends StatelessWidget {
                   SignUpBar(
                       label: 'Sign up',
                       isLoading: false,
-                      onPressed: () {
+                      onPressed: () async{
                         if (_signupKey.currentState.validate()) {
-                          print(emailInputController.text);
-                          FirebaseAuth.instance
-                              .createUserWithEmailAndPassword(
-                                  email: emailInputController.text,
-                                  password: pwdInputController.text)
-                              .then((result) => {
-                                    Navigator.pushAndRemoveUntil(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => HomePage()),
-                                        (_) => false),
-                                    emailInputController.clear(),
-                                    pwdInputController.clear(),
-                                  })
-                              .catchError((err) {
-                            print(err);
-                            Utils.showErrorDialog(err, context);
-                          });
+                          await _signup(context);
                         }
                       }),
                   Align(
@@ -123,5 +105,12 @@ class Register extends StatelessWidget {
         ),
       ),
     );
+  }
+  Future<bool> _signup(BuildContext context) async {
+    bool loggedIn = false;
+    if (await context.read<AuthModel>().signup(emailInputController.text, pwdInputController.text)) {
+      loggedIn = true;
+    }
+    return loggedIn;
   }
 }

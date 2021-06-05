@@ -1,14 +1,8 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:linkone/screens/auth/widgets/signin.dart';
 import 'package:linkone/screens/auth/widgets/signup.dart';
-import '../../config/pallet.dart';
-// import '../auth/widgets/register.dart';
-// import '../auth/widgets/sign_in.dart';
-// import '../../screens/home.dart';
-
 import 'widgets/background_painter.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -44,20 +38,7 @@ class _AuthScreenState extends State<AuthScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: 
-      // LitAuth.custom(
-      //   errorNotification: const NotificationConfig(
-      //     backgroundColor: Palette.darkBlue,
-      //     icon: Icon(
-      //       Icons.error_outline,
-      //       color: Colors.deepOrange,
-      //       size: 32,
-      //     ),
-      //   ),
-      //   onAuthSuccess: () {
-      //     Navigator.of(context).pushReplacement(HomeScreen.route);
-      //   },
-        Stack(
+      body: Stack(
           children: [
             SizedBox.expand(
               child: CustomPaint(
@@ -90,7 +71,6 @@ class _AuthScreenState extends State<AuthScreen>
                             ? SignIn(
                                 key: const ValueKey('SignIn'),
                                 onRegisterClicked: () {
-                                  // context.resetSignInForm();
                                   showSignInPage.value = false;
                                   _controller.forward();
                                 },
@@ -98,7 +78,6 @@ class _AuthScreenState extends State<AuthScreen>
                             : Register(
                                 key: const ValueKey('Register'),
                                 onSignInPressed: () {
-                                  // context.resetSignInForm();
                                   showSignInPage.value = true;
                                   _controller.reverse();
                                 },
