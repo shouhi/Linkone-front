@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:linkone/root.dart';
 import 'package:provider/provider.dart';
 
 import 'package:linkone/screens/auth/auth.dart';
@@ -38,7 +39,7 @@ class _LoginCheck extends StatelessWidget {
     //AuthModelで一括管理
     final bool _loggedIn = context.watch<AuthModel>().loggedIn;
     return _loggedIn
-        ? HomePage()
+        ? RootWidget()
         : AuthScreen();
   }
 }
