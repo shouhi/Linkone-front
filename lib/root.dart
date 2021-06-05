@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:linkone/screens/home.dart';
+import 'package:linkone/screens/routes/home.dart';
+import 'package:linkone/screens/routes/timetable.dart';
 
 class RootWidget extends StatefulWidget {
   RootWidget({Key key}) : super(key: key);
@@ -30,8 +31,8 @@ class _RootWidgetState extends State<RootWidget> {
 
   var _routes = [
     HomePage(),
-    // Class(),
-    // Calendar(),
+    HomePage(),
+    TimeTable(),
     // Blog(),
   ];
 
