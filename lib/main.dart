@@ -4,7 +4,7 @@ import 'package:linkone/root.dart';
 import 'package:provider/provider.dart';
 
 import 'package:linkone/screens/auth/auth.dart';
-import 'package:linkone/screens/home.dart';
+import 'package:linkone/screens/routes/home.dart';
 import 'package:linkone/models/auth_model.dart';
 // import 'package:linkone/screens/tutorial.dart';
 
