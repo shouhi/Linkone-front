@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
+
 import 'package:linkone/config/pallet.dart';
 import 'package:linkone/config/utils.dart';
-import 'package:linkone/screens/home.dart';
-
+import 'package:linkone/models/auth_model.dart';
 import 'decoration_function.dart';
 import 'sign_in_up_bar.dart';
 import 'title.dart';
@@ -12,7 +12,7 @@ import 'title.dart';
 class SignIn extends StatelessWidget {
   SignIn({
     Key key,
-    @required this.onRegisterClicked,
+    this.onRegisterClicked,
   }) : super(key: key);
 
   final VoidCallback onRegisterClicked;
@@ -26,8 +26,8 @@ class SignIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isSubmitting = false;
     Firebase.initializeApp();
-    // final isSubmitting = context.isSubmitting();
     return Form(
       key: _signinKey,
       child: Padding(
@@ -51,6 +51,7 @@ class SignIn extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     child: TextFormField(
                       decoration: signInInputDecoration(hintText: '学生メールアドレス'),
+                      validator: Utils.emailValidator,
                       controller: emailInputController,
                     ),
                   ),
@@ -58,32 +59,19 @@ class SignIn extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     child: TextFormField(
                       decoration: signInInputDecoration(hintText: 'Password'),
+                      validator: Utils.pwdValidator,
                       controller: pwdInputController,
                     ),
                   ),
                   SignInBar(
                     label: 'Sign in',
-                    isLoading: false,
-                    onPressed: () {
+                    isLoading: isSubmitting,
+                    onPressed: () async {
+                      //indicator一旦保留（statefulじゃないと無理かも）
+                      isSubmitting = true;
+                      print(isSubmitting);
                       if (_signinKey.currentState.validate()) {
-                        FirebaseAuth.instance
-                          .signInWithEmailAndPassword(
-                              email: emailInputController.text,
-                              password: pwdInputController.text)
-                          .then((result) => {
-                            print("User id is ${result.user.uid}"),
-                            Navigator.pushAndRemoveUntil(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        HomePage(),),
-                                (_) => false),
-                            emailInputController.clear(),
-                            pwdInputController.clear(),
-                          })
-                          .catchError((err) {
-                            Utils.showErrorDialog(err, context);
-                          });
+                        await _login(context);
                       }
                     },
                   ),
@@ -112,5 +100,12 @@ class SignIn extends StatelessWidget {
         ),
       ),
     );
+  }
+  Future<bool> _login(BuildContext context) async {
+    bool loggedIn = false;
+    if (await context.read<AuthModel>().login(emailInputController.text, pwdInputController.text)) {
+      loggedIn = true;
+    }
+    return loggedIn;
   }
 }
