@@ -42,15 +42,15 @@ class _TimeTableState extends State<TimeTable> {
       body: Container(
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.black),
+          border: Border.all(color: Colors.grey),
         ),
-        // margin: EdgeInsets.all(20.0),
         child: Column(
+          //月~金の曜日の箇所
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-              color: Colors.black12,
+              color: Colors.white24,
               padding: EdgeInsets.only(left: 35.0),
               child: GridView.count(
                 crossAxisCount: 5,
@@ -59,7 +59,7 @@ class _TimeTableState extends State<TimeTable> {
                 childAspectRatio:
                     (MediaQuery.of(context).size.width - 50 * 2 - 29) /
                         5 /
-                        30, //画面幅に応じて幅可変、高さは30で固定
+                        25, //画面幅に応じて幅可変、高さは25で固定
                 children: daySet(),
               ),
             ),
@@ -69,6 +69,7 @@ class _TimeTableState extends State<TimeTable> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Container(
+                    //1限~6限の箇所
                     constraints: BoxConstraints.expand(width: 35.0),
                     child: GridView.count(
                       crossAxisCount: 1,
@@ -85,6 +86,7 @@ class _TimeTableState extends State<TimeTable> {
                             29 +
                             92)),
                     child: GridView.count(
+                      //授業カラムが入る箇所
                       crossAxisCount: 5,
                       physics: ScrollPhysics(),
                       shrinkWrap: true,
@@ -106,6 +108,7 @@ class _TimeTableState extends State<TimeTable> {
     );
   }
 
+  //月~金生成リスト
   List<Widget> daySet() {
     List<Widget> days = [];
 
@@ -116,15 +119,10 @@ class _TimeTableState extends State<TimeTable> {
             child: Text(
               _days[i],
               style: TextStyle(
-                fontSize: 18.0,
+                fontSize: 15.0,
                 fontWeight: FontWeight.w200,
-                fontFamily: "Roboto",
+                // fontFamily: "Roboto",     いい感じのフォントあれば
               ),
-            ),
-          ),
-          decoration: BoxDecoration(
-            border: Border(
-              left: BorderSide(color: Color.fromARGB(100, 0, 0, 0)),
             ),
           ),
         ),
@@ -133,6 +131,7 @@ class _TimeTableState extends State<TimeTable> {
     return days;
   }
 
+  //1~6限生成リスト
   List<Widget> periodSet() {
     List<Widget> periods = [];
 
@@ -142,7 +141,7 @@ class _TimeTableState extends State<TimeTable> {
           padding: EdgeInsets.only(left: 5.0, right: 5.0),
           child: Center(
             child: Text(
-              "$i限",
+              "$i",
               style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.w200,
@@ -154,15 +153,15 @@ class _TimeTableState extends State<TimeTable> {
             border: Border(
               top: BorderSide(color: Color.fromARGB(100, 0, 0, 0)),
             ),
-            color: Colors.black12,
+            color: Colors.grey[200],
           ),
         ),
       );
     }
-
     return periods;
   }
 
+  //授業カラム生成リスト
   List<Widget> classSet(BuildContext context) {
     List<Widget> classes = [];
 
