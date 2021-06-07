@@ -65,7 +65,7 @@ class _TimeTableState extends State<TimeTable> {
             ),
             Expanded(
               child: Row(
-                // mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Container(
