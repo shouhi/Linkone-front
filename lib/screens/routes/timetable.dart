@@ -180,6 +180,7 @@ class _TimeTableState extends State<TimeTable> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text(
+                    //Text量によって表示をコントロール（一旦20文字程度）授業名
                     _tableSetClassNames[i].length < 21
                         ? _tableSetClassNames[i]
                         : _tableSetClassNames[i].substring(0, 20),
@@ -190,6 +191,7 @@ class _TimeTableState extends State<TimeTable> {
                     ),
                   ),
                   Text(
+                    //Text量によって表示をコントロール（一旦15文字程度）教師名
                     _tableSetTeacherNames[i].length < 15
                         ? _tableSetTeacherNames[i]
                         : _tableSetTeacherNames[i].substring(0, 15),
@@ -212,15 +214,12 @@ class _TimeTableState extends State<TimeTable> {
         ),
       );
     }
-
     return classes;
   }
 }
 
 class ConstantValues {
   List<Color> tableColors = <Color>[];
-  List<BottomNavigationBarItem> bottomNavigationBarItems =
-      <BottomNavigationBarItem>[];
 
   //Color型のリストを取得
   List<Color> getColorList(int opacity) {
@@ -238,7 +237,6 @@ class ConstantValues {
       Color.fromARGB(opacity, 207, 167, 205), //10
       Color.fromARGB(opacity, 244, 180, 208), //11
     ];
-
     return tableColors;
   }
 }

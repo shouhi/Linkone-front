@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linkone/screens/routes/calender/weeklyCalender.dart';
 import 'package:linkone/screens/routes/home.dart';
 import 'package:linkone/screens/routes/timetable.dart';
 
@@ -31,7 +32,7 @@ class _RootWidgetState extends State<RootWidget> {
 
   var _routes = [
     HomePage(),
-    HomePage(),
+    WeeklyCalender(),
     TimeTable(),
     // Blog(),
   ];
