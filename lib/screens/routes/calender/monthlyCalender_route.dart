@@ -149,9 +149,21 @@ class _MonthlyCalenderState extends State<MonthlyCalender> {
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 16.0),
                 child: _calendarCarouselNoHeader,
+                
               ), //
             ],
           ),
-        ));
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            // Navigator.push(context,
+            //     MaterialPageRoute(builder: (context) => AddTodo())
+            //     );
+          },
+          child: const Icon(
+            Icons.add,
+          ),
+        ),
+    );
   }
 }
