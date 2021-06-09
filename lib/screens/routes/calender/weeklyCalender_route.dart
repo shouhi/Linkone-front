@@ -78,7 +78,7 @@ class _WeeklyCalenderState extends State<WeeklyCalender> {
             Text(
               "$resultMonth/$resultDay",
               style: TextStyle(
-                fontSize: 21,
+                fontSize: 19,
                 fontFamily: "mediumfont",
               ),
             ),
@@ -87,7 +87,7 @@ class _WeeklyCalenderState extends State<WeeklyCalender> {
         Text(
           "$resultWeekday",
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 18,
             fontFamily: "mediumfont",
             color: colors,
           ),
@@ -101,9 +101,21 @@ class _WeeklyCalenderState extends State<WeeklyCalender> {
     final double deviceHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('一週間カレンダー'),
-      ),
+      // appBar:AppBar(
+      //   title: Text('一週間カレンダー'), 
+      //   centerTitle: true, 
+      //   actions: <Widget>[
+      //     Padding(
+      //       padding: const EdgeInsets.only(right: 60.0),
+      //       child: GestureDetector(
+      //         onTap: () {
+      //           print("aaa");
+      //         },
+      //         child: Icon(Icons.calendar_today_sharp),
+      //       )
+      //     ),
+      //   ]
+      // ),
       body: ListView(
         shrinkWrap: true,
         children: List.generate(7, (index) {
@@ -148,8 +160,7 @@ class _WeeklyCalenderState extends State<WeeklyCalender> {
                               Container(
                                 color: Colors.white,
                               )
-                            ]
-                        ),
+                            ]),
                       ),
                     ),
                   ],
