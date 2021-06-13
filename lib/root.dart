@@ -17,16 +17,16 @@ class _RootWidgetState extends State<RootWidget> {
 
   // アイコン情報
   static const _footerIcons = [
-    Icons.home,
+    Icons.language,
+    Icons.check,
     Icons.calendar_today,
-    Icons.calendar_view_day,
-    Icons.people
+    Icons.account_circle_outlined
   ];
 
   // アイコン文字列
   static const _footerItemNames = [
-    'ホーム',
-    'カレンダー',
+    'タイムライン',
+    'ToDo',
     '時間割',
     'マイページ'
   ];
