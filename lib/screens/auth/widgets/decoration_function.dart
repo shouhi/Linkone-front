@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../config/pallet.dart';
+import 'package:linkone/utils/const.dart';
 
 InputDecoration registerInputDecoration({String hintText, Widget suffixIcon}) {
   return InputDecoration(

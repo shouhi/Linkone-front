@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:linkone/utils/util.dart';
 import 'package:provider/provider.dart';
 
-import 'package:linkone/config/utils.dart';
 import 'package:linkone/models/auth_model.dart';
 import 'decoration_function.dart';
 import 'sign_in_up_bar.dart';

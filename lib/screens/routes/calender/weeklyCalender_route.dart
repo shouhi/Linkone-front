@@ -101,21 +101,6 @@ class _WeeklyCalenderState extends State<WeeklyCalender> {
     final double deviceHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      // appBar:AppBar(
-      //   title: Text('一週間カレンダー'), 
-      //   centerTitle: true, 
-      //   actions: <Widget>[
-      //     Padding(
-      //       padding: const EdgeInsets.only(right: 60.0),
-      //       child: GestureDetector(
-      //         onTap: () {
-      //           print("aaa");
-      //         },
-      //         child: Icon(Icons.calendar_today_sharp),
-      //       )
-      //     ),
-      //   ]
-      // ),
       body: ListView(
         shrinkWrap: true,
         children: List.generate(7, (index) {
