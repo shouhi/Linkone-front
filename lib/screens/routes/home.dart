@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:linkone/utils/appBar.dart';
+import 'package:linkone/utils/drawer.dart';
 import 'package:provider/provider.dart';
 
 import 'package:linkone/models/auth_model.dart';
@@ -17,7 +19,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
+      appBar: appBarMain(context),
+      drawer: drawerMain(context),
+      body: Container(
       child: Column(
         children: <Widget>[
           SizedBox(height: 40.0),
