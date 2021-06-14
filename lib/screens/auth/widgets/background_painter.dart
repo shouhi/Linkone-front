@@ -2,8 +2,7 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-
-import '../../../config/pallet.dart';
+import 'package:linkone/utils/const.dart';
 
 class BackgroundPainter extends CustomPainter {
   BackgroundPainter({

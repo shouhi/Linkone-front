@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:linkone/utils/appBar.dart';
+import 'package:linkone/utils/drawer.dart';
 import 'package:provider/provider.dart';
 
 import 'package:linkone/models/auth_model.dart';
@@ -36,9 +38,8 @@ class _TimeTableState extends State<TimeTable> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('時間割'),
-      ),
+      appBar: appBarMain(context),
+      drawer: drawerMain(context),
       body: Container(
         alignment: Alignment.center,
         decoration: BoxDecoration(

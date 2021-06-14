@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:linkone/screens/routes/calender/weeklyCalender_route.dart';
+import 'package:linkone/utils/appBar.dart';
+import 'package:linkone/utils/const.dart';
+import 'package:linkone/utils/drawer.dart';
 
 import 'monthlyCalender_route.dart';
 
@@ -33,15 +36,25 @@ class _CalenderState extends State<Calender> {
         home: DefaultTabController(
             length: _buildTabs().length,
             child: Scaffold(
+              //ここのappbarも後に共通化
               appBar: AppBar(
                 centerTitle: true,
-                title: Text('一週間カレンダー'), 
+                title: Column(
+                  children:[
+                    Image.asset(
+                    'lib/assets/LinkoneIconwithopa.png',
+                    height:65,
+                    ),
+                  ]
+                ),
+                backgroundColor: Palette.linkone,
+                elevation: 0,
                 bottom: TabBar(
                   controller: _controller,
                   tabs: _buildTabs(),
                 ),
               ),
-              // drawer: drawerMain(context),
+              drawer: drawerMain(context),
               body: TabBarView(
                 controller: _controller,
                 children: _buildTabPages(),
