@@ -52,6 +52,8 @@ class _HomePageState extends State<HomePage> {
     ));
   }
 
+
+  //後に消す
   Future<void> _logout() async {
     await context.read<AuthModel>().logout();
   }

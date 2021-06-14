@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:linkone/screens/auth/auth.dart';
+import 'package:linkone/models/auth_model.dart';
+import 'package:provider/provider.dart';
 
 import '../root.dart';
 import 'const.dart';
@@ -75,12 +76,8 @@ Widget drawerMain(BuildContext context) {
                         FlatButton(
                           child: Text('ログアウト'),
                           onPressed: () async {
-                            await _auth.signOut();
-                            Navigator.pushAndRemoveUntil(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => AuthScreen()),
-                                (_) => false);
+                            await context.read<AuthModel>().logout();
+                            Navigator.of(context).pop();
                           },
                         ),
                         FlatButton(
