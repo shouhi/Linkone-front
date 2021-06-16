@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:linkone/utils/appBar.dart';
 import 'package:linkone/utils/drawer.dart';
 import 'package:provider/provider.dart';
-import 'package:linkone/screens/routes/todo.dart';
+import 'package:linkone/screens/todo/sharedToDoList.dart';
 import 'package:linkone/models/auth_model.dart';
 
 class TimeTable extends StatefulWidget {
