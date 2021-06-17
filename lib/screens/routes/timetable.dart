@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:linkone/utils/appBar.dart';
 import 'package:linkone/utils/drawer.dart';
 import 'package:provider/provider.dart';
-
+import 'package:linkone/screens/todo/sharedToDoList.dart';
 import 'package:linkone/models/auth_model.dart';
 
 class TimeTable extends StatefulWidget {
@@ -173,7 +173,14 @@ class _TimeTableState extends State<TimeTable> {
             color: ConstantValues().getColorList(150)[_tableSetColorIds[i]],
             padding: EdgeInsets.all(0.0),
             //詳細に飛んだり追加したりの機能実装していく
-            onPressed: () => print(i),
+            onPressed: () => 
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return todoview();
+                },
+              ),
+            ),
             // tapTable(context, i),
             child: Center(
               child: Column(
